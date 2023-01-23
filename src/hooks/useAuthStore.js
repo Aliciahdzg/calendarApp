@@ -32,8 +32,8 @@ export const useAuthStore = () => {
 
         try {
             
-            const res = await calendarApi.post('/auth/new', { name, email, password })
-            console.log(res)
+            const { data } = await calendarApi.post('/auth/new', { name, email, password })
+            // console.log(res)
             localStorage.setItem('token', data.token);
             localStorage.setItem('token-init-date', new Date().getTime() );
             dispatch( onLogin({ name: data.name, uid: data.uid }) );
@@ -41,7 +41,7 @@ export const useAuthStore = () => {
         } catch (error) {
             
             console.log(error);
-            dispatch( onLogout(error.response.data?.msg || '--') );
+            dispatch( onLogout( error.response.data?.msg || '--') );
             setTimeout(() => {
                 dispatch( clearErrorMessage() );
             }, 10);
