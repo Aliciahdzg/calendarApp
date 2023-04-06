@@ -1,0 +1,14 @@
+version: "1.0.0"
+
+services:
+  app: 
+    container_name: calendar
+    image: calendar
+    restart: always
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    # volumes:
+    #   - ./src:/app/src
+    ports:
+      - 80:80
