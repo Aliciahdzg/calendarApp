@@ -6,8 +6,6 @@ COPY package.json ./
 COPY yarn.lock .
 RUN yarn install --legacy-peer-deps --silent
 COPY . ./
-# EXPOSE 5173
-# CMD [ "yarn", "dev" ]
 RUN yarn build
 
 
